@@ -1,0 +1,98 @@
+please input the vexnum!
+14
+please input the arcnum!
+20
+please input the 14 vertex num value
+v0
+v1
+v2
+v3
+v4
+v5
+v6
+v7
+v8
+v9
+v10
+v11
+v22
+v13
+please input the every arc head tail weight!
+v0 v4 1
+v0 v5 1
+v0 v11 1
+v1 v2 1
+v1 v4 1
+v1 v8 1
+v2 v6 1
+v2 v5 1
+v2 v9 1
+v3 v2 1
+v3 v13 1
+v4 v7 1
+v5 v8 1
+v5 v22 1
+v8 v7 1
+v9 v10 1
+v9 v11 1
+v10 v13 1
+v22 v9 1
+v6 v5 1
+create the graph successful!
+bfs_traverse
+init the queue successful!
+v0 v11 v5 v4 v22 v8 v7 v9 v10 v13 
+dfs_traverse
+v0 v11 v5 v22 v9 v10 v13 v8 v7 v4 v1 v2 v6 v3 
+the vertex and the node is as follow!
+the [1] vertex is [v0] the arc is =>
+=> the vertex node name is [v11] , the weight is [1]
+=> the vertex node name is [v5] , the weight is [1]
+=> the vertex node name is [v4] , the weight is [1]
+=====================>
+the [2] vertex is [v1] the arc is =>
+=> the vertex node name is [v8] , the weight is [1]
+=> the vertex node name is [v4] , the weight is [1]
+=> the vertex node name is [v2] , the weight is [1]
+=====================>
+the [3] vertex is [v2] the arc is =>
+=> the vertex node name is [v9] , the weight is [1]
+=> the vertex node name is [v5] , the weight is [1]
+=> the vertex node name is [v6] , the weight is [1]
+=====================>
+the [4] vertex is [v3] the arc is =>
+=> the vertex node name is [v13] , the weight is [1]
+=> the vertex node name is [v2] , the weight is [1]
+=====================>
+the [5] vertex is [v4] the arc is =>
+=> the vertex node name is [v7] , the weight is [1]
+=====================>
+the [6] vertex is [v5] the arc is =>
+=> the vertex node name is [v22] , the weight is [1]
+=> the vertex node name is [v8] , the weight is [1]
+=====================>
+the [7] vertex is [v6] the arc is =>
+=> the vertex node name is [v5] , the weight is [1]
+=====================>
+the [8] vertex is [v7] the arc is =>
+=====================>
+the [9] vertex is [v8] the arc is =>
+=> the vertex node name is [v7] , the weight is [1]
+=====================>
+the [10] vertex is [v9] the arc is =>
+=> the vertex node name is [v11] , the weight is [1]
+=> the vertex node name is [v10] , the weight is [1]
+=====================>
+the [11] vertex is [v10] the arc is =>
+=> the vertex node name is [v13] , the weight is [1]
+=====================>
+the [12] vertex is [v11] the arc is =>
+=====================>
+the [13] vertex is [v22] the arc is =>
+=> the vertex node name is [v9] , the weight is [1]
+=====================>
+the [14] vertex is [v13] the arc is =>
+=====================>
+init stack successful!
+v3 v1 v2 v6 v0 v4 v5 v8 v7 v22 v9 v10 v13 v11 free all space complete!
+
