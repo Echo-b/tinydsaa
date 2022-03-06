@@ -6,8 +6,8 @@ int main()
   // bubble_sort(arr, 10);
   //  insertion_sort(arr, 10);
   //  selection_sort(arr, 10);
-  // hill_sort(arr, 10);
-  merge_sort(arr, 10);
+   hill_sort(arr, 10);
+  //merge_sort(arr, 10);
   dispaly(arr, 10);
 
   return 0;
