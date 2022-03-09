@@ -6,21 +6,17 @@
  * @param e
  * @return ptr_thread_tree
  */
-ptr_thread_tree insert(ptr_thread_tree t, DataType e)
-{
-  if (!t)
-  {
+ptr_thread_tree insert(ptr_thread_tree t, DataType e) {
+  if (!t) {
     t = (ptr_thread_tree)malloc(sizeof(ThreadTree_t));
-    if (!t)
-    {
+    if (!t) {
       printf("malloc failed");
       return ERROR;
     }
     t->data = e;
     t->lchild = t->rchild = nullptr;
     printf("insert node successful!\n");
-  }
-  else if (e < t->data)
+  } else if (e < t->data)
     t->lchild = insert(t->lchild, e);
   else if (e > t->data)
     t->rchild = insert(t->rchild, e);
@@ -32,17 +28,13 @@ ptr_thread_tree insert(ptr_thread_tree t, DataType e)
  *
  * @param t
  */
-void preorder(ptr_thread_tree t)
-{
-  while (t)
-  {
-    while (t->ltag == lINK && t->lchild)
-    {
+void preorder(ptr_thread_tree t) {
+  while (t) {
+    while (t->ltag == lINK && t->lchild) {
       visit(t);
       t = t->lchild;
     }
-    while (t->rtag == THREAD && t->rchild)
-    {
+    while (t->rtag == THREAD && t->rchild) {
       t = t->rchild;
       visit(t);
     }
@@ -55,17 +47,13 @@ void preorder(ptr_thread_tree t)
  *
  * @param t
  */
-void prethreading(ptr_thread_tree t)
-{
-  if (t)
-  {
-    if (!t->lchild)
-    {
+void prethreading(ptr_thread_tree t) {
+  if (t) {
+    if (!t->lchild) {
       t->ltag = THREAD;
       t->lchild = pre;
     }
-    if (!pre->rchild && pre)
-    {
+    if (!pre->rchild && pre) {
       pre->rtag = THREAD;
       pre->rchild = t;
     }
@@ -80,18 +68,14 @@ void prethreading(ptr_thread_tree t)
  *
  * @param t
  */
-void inthreading(ptr_thread_tree t)
-{
-  if (t)
-  {
+void inthreading(ptr_thread_tree t) {
+  if (t) {
     inthreading(t->lchild);
-    if (!t->lchild)
-    {
+    if (!t->lchild) {
       t->ltag = THREAD;
       t->lchild = pre;
     }
-    if (!pre->rchild && pre)
-    {
+    if (!pre->rchild && pre) {
       pre->rtag = THREAD;
       pre->rchild = t;
     }
@@ -105,17 +89,13 @@ void inthreading(ptr_thread_tree t)
  *
  * @param t
  */
-void inorder(ptr_thread_tree t)
-{
-  while (t)
-  {
-    while (t->ltag == lINK && t->lchild)
-    {
+void inorder(ptr_thread_tree t) {
+  while (t) {
+    while (t->ltag == lINK && t->lchild) {
       t = t->lchild;
     }
     visit(t);
-    while (t->rtag == THREAD && t->rchild)
-    {
+    while (t->rtag == THREAD && t->rchild) {
       t = t->rchild;
       visit(t);
     }
@@ -128,8 +108,7 @@ void inorder(ptr_thread_tree t)
  *
  * @param t
  */
-void postorder(ptr_thread_tree t)
-{
+void postorder(ptr_thread_tree t) {
 }
 
 /**
@@ -137,19 +116,15 @@ void postorder(ptr_thread_tree t)
  *
  * @param t
  */
-void postthreading(ptr_thread_tree t)
-{
-  if (t)
-  {
+void postthreading(ptr_thread_tree t) {
+  if (t) {
     postthreading(t->lchild);
     postthreading(t->rchild);
-    if (!t->lchild)
-    {
+    if (!t->lchild) {
       t->ltag = THREAD;
       t->lchild = pre;
     }
-    if (!pre->rchild && pre)
-    {
+    if (!pre->rchild && pre) {
       pre->rtag = THREAD;
       pre->rchild = t;
     }
@@ -162,8 +137,7 @@ void postthreading(ptr_thread_tree t)
  *
  * @param t
  */
-void levelorder(ptr_thread_tree t)
-{
+void levelorder(ptr_thread_tree t) {
 }
 
 /**
@@ -171,8 +145,7 @@ void levelorder(ptr_thread_tree t)
  *
  * @param t
  */
-void visit(ptr_thread_tree t)
-{
+void visit(ptr_thread_tree t) {
   printf("%d ", t->data);
 }
 
@@ -182,8 +155,7 @@ void visit(ptr_thread_tree t)
  * @param t
  * @return ptr_thread_tree
  */
-ptr_thread_tree findmin(ptr_thread_tree t)
-{
+ptr_thread_tree findmin(ptr_thread_tree t) {
   if (t)
     while (t->ltag == lINK && t->lchild)
       t = t->lchild;
@@ -196,8 +168,7 @@ ptr_thread_tree findmin(ptr_thread_tree t)
  * @param t
  * @return ptr_thread_tree
  */
-ptr_thread_tree findmax(ptr_thread_tree t)
-{
+ptr_thread_tree findmax(ptr_thread_tree t) {
   if (t)
     while (t->rtag == lINK && t->rchild)
       t = t->rchild;
@@ -211,8 +182,7 @@ ptr_thread_tree findmax(ptr_thread_tree t)
  * @param e
  * @return ptr_thread_tree
  */
-ptr_thread_tree find(ptr_thread_tree t, DataType e)
-{
+ptr_thread_tree find(ptr_thread_tree t, DataType e) {
   if (!t)
     return nullptr;
   if (t->data == e)
@@ -230,8 +200,7 @@ ptr_thread_tree find(ptr_thread_tree t, DataType e)
  * @param e
  * @return ptr_thread_tree
  */
-ptr_thread_tree del(ptr_thread_tree t, DataType e)
-{
+ptr_thread_tree del(ptr_thread_tree t, DataType e) {
 }
 
 /**
@@ -240,10 +209,8 @@ ptr_thread_tree del(ptr_thread_tree t, DataType e)
  * @param t
  * @return int
  */
-int destory_tree(ptr_thread_tree t)
-{
-  if (t)
-  {
+int destory_tree(ptr_thread_tree t) {
+  if (t) {
     if (t->ltag == lINK && t->lchild)
       destory_tree(t->lchild);
     if (t->rtag == lINK && t->rchild)

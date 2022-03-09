@@ -13,17 +13,16 @@
 
 typedef int ElementType;
 
-typedef struct Stack
-{
-  ElementType *base;
-  ElementType *top;
+typedef struct Stack {
+  ElementType* base;
+  ElementType* top;
   int stack_size;
 } SqStack;
 
-int initStack(SqStack *s);
-int get_top_s(SqStack s, ElementType *e);
-int push_s(SqStack *s, ElementType e);
-int pop_s(SqStack *s, ElementType *e);
+int initStack(SqStack* s);
+int get_top_s(SqStack s, ElementType* e);
+int push_s(SqStack* s, ElementType e);
+int pop_s(SqStack* s, ElementType* e);
 int is_empty_stack(SqStack s);
 
-#endif // STACK
+#endif  // STACK

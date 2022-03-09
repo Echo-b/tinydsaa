@@ -1,6 +1,5 @@
 #include "linked_list_queue.c"
-int main()
-{
+int main() {
   linkedListQueue_t que;
   initLinkedQueue(&que);
   push(&que, 1);

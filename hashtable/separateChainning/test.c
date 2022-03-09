@@ -1,7 +1,6 @@
 #include "hashtlb.c"
 
-int main()
-{
+int main() {
   hashTable h = init(5);
   insert(h, 19);
   insert(h, 21);

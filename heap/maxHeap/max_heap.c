@@ -6,17 +6,14 @@
  * @param t
  * @return int
  */
-ptr_max_heap init()
-{
+ptr_max_heap init() {
   ptr_max_heap h = (ptr_max_heap)malloc(sizeof(maxHeapStruct_t));
-  if (!h)
-  {
+  if (!h) {
     printf("malloc failed!\n");
     return ERROR;
   }
-  h->data = (ElementType *)malloc(sizeof(ElementType) * (CAPACITY + 1));
-  if (!h->data)
-  {
+  h->data = (ElementType*)malloc(sizeof(ElementType) * (CAPACITY + 1));
+  if (!h->data) {
     printf("malloc failed!\n");
     return ERROR;
   }
@@ -34,10 +31,8 @@ ptr_max_heap init()
  * @param e
  * @return int
  */
-int insert(ptr_max_heap h, ElementType e)
-{
-  if (is_full(h))
-  {
+int insert(ptr_max_heap h, ElementType e) {
+  if (is_full(h)) {
     printf("the heap is full!\n");
     return ERROR;
   }
@@ -56,10 +51,8 @@ int insert(ptr_max_heap h, ElementType e)
  * @param e
  * @return int
  */
-int delmax(ptr_max_heap h)
-{
-  if (is_empty(h))
-  {
+int delmax(ptr_max_heap h) {
+  if (is_empty(h)) {
     printf("the heap is empty!\n");
     return ERROR;
   }
@@ -67,8 +60,7 @@ int delmax(ptr_max_heap h)
   max_data = h->data[1];
   last_data = h->data[h->size--];
   int parent, child;
-  for (parent = 1; parent * 2 <= h->size; parent = child)
-  {
+  for (parent = 1; parent * 2 <= h->size; parent = child) {
     child = parent * 2;
     if (child != h->size && h->data[child] < h->data[child + 1])
       ++child;
@@ -87,8 +79,7 @@ int delmax(ptr_max_heap h)
  *
  * @param h
  */
-void destory(ptr_max_heap h)
-{
+void destory(ptr_max_heap h) {
   h->capacity = 0;
   h->size = 0;
   free(h->data);
@@ -101,8 +92,7 @@ void destory(ptr_max_heap h)
  *
  * @param h
  */
-void make_empty(ptr_max_heap h)
-{
+void make_empty(ptr_max_heap h) {
   h->capacity = 0;
   h->size = 0;
   h->data = nullptr;
@@ -115,10 +105,8 @@ void make_empty(ptr_max_heap h)
  * @param h
  * @return ElementType
  */
-ElementType findmax(ptr_max_heap h)
-{
-  if (is_empty(h))
-  {
+ElementType findmax(ptr_max_heap h) {
+  if (is_empty(h)) {
     printf("the heap is empty!\n");
     return ERROR;
   }
@@ -132,8 +120,7 @@ ElementType findmax(ptr_max_heap h)
  * @return true
  * @return false
  */
-bool is_empty(ptr_max_heap h)
-{
+bool is_empty(ptr_max_heap h) {
   if (h->size == 0)
     return true;
   else
@@ -147,8 +134,7 @@ bool is_empty(ptr_max_heap h)
  * @return true
  * @return false
  */
-bool is_full(ptr_max_heap h)
-{
+bool is_full(ptr_max_heap h) {
   if (h->size == h->capacity)
     return true;
   else
@@ -160,8 +146,7 @@ bool is_full(ptr_max_heap h)
  *
  * @param h
  */
-void display(ptr_max_heap h)
-{
+void display(ptr_max_heap h) {
   for (int i = 1; i <= h->size; ++i)
     printf("%3d", h->data[i]);
   printf("\n");

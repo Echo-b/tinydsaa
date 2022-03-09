@@ -6,11 +6,9 @@
  * @param deque
  * @return int
  */
-int initDeQueue(DeQueue_t *deque)
-{
+int initDeQueue(DeQueue_t* deque) {
   deque->front = (ptr_deQueueNode)malloc(sizeof(DeQueueNode_t));
-  if (!deque->front)
-  {
+  if (!deque->front) {
     printf("malloc failed!\n");
     return ERROR;
   }
@@ -30,12 +28,10 @@ int initDeQueue(DeQueue_t *deque)
  * @param e
  * @return int
  */
-int push_front(DeQueue_t *deque, ElementType e)
-{
+int push_front(DeQueue_t* deque, ElementType e) {
   ptr_deQueueNode push_node =
       (ptr_deQueueNode)malloc(sizeof(struct DeQueueNode));
-  if (!push_node)
-  {
+  if (!push_node) {
     printf("malloc failed!\n");
     return ERROR;
   }
@@ -55,10 +51,8 @@ int push_front(DeQueue_t *deque, ElementType e)
  * @param e
  * @return int
  */
-int pop_front(DeQueue_t *deque, ElementType *e)
-{
-  if (is_empty(*deque))
-  {
+int pop_front(DeQueue_t* deque, ElementType* e) {
+  if (is_empty(*deque)) {
     printf("the queue is empty!\n");
     return ERROR;
   }
@@ -77,12 +71,10 @@ int pop_front(DeQueue_t *deque, ElementType *e)
  * @param e
  * @return int
  */
-int push_back(DeQueue_t *deque, ElementType e)
-{
+int push_back(DeQueue_t* deque, ElementType e) {
   ptr_deQueueNode push_node =
       (ptr_deQueueNode)malloc(sizeof(struct DeQueueNode));
-  if (!push_node)
-  {
+  if (!push_node) {
     printf("malloc failed!\n");
     return ERROR;
   }
@@ -102,10 +94,8 @@ int push_back(DeQueue_t *deque, ElementType e)
  * @param e
  * @return int
  */
-int pop_back(DeQueue_t *deque, ElementType *e)
-{
-  if (is_empty(*deque))
-  {
+int pop_back(DeQueue_t* deque, ElementType* e) {
+  if (is_empty(*deque)) {
     printf("the queue is empty!\n");
     return ERROR;
   }
@@ -124,10 +114,8 @@ int pop_back(DeQueue_t *deque, ElementType *e)
  * @param e
  * @return int
  */
-int front(DeQueue_t deque, ElementType *e)
-{
-  if (is_empty(deque))
-  {
+int front(DeQueue_t deque, ElementType* e) {
+  if (is_empty(deque)) {
     printf("the deque is empty!\n");
     return ERROR;
   }
@@ -143,10 +131,8 @@ int front(DeQueue_t deque, ElementType *e)
  * @param e
  * @return int
  */
-int back(DeQueue_t deque, ElementType *e)
-{
-  if (is_empty(deque))
-  {
+int back(DeQueue_t deque, ElementType* e) {
+  if (is_empty(deque)) {
     printf("the deque is empty!\n");
     return ERROR;
   }
@@ -161,8 +147,7 @@ int back(DeQueue_t deque, ElementType *e)
  * @param deque
  * @return int
  */
-int clear_queue(DeQueue_t *deque)
-{
+int clear_queue(DeQueue_t* deque) {
   deque->front = deque->rear = nullptr;
   deque->size = 0;
   printf("clear the deque successful!\n");
@@ -175,19 +160,16 @@ int clear_queue(DeQueue_t *deque)
  * @param deque
  * @return int
  */
-int destory_queue(DeQueue_t *deque)
-{
+int destory_queue(DeQueue_t* deque) {
   // free the front part
-  while (deque->front->next)
-  {
-    DeQueueNode_t *tmp = deque->front->next;
+  while (deque->front->next) {
+    DeQueueNode_t* tmp = deque->front->next;
     free(deque->front);
     deque->front = tmp;
   }
   // free the rear part
-  while (deque->rear->next)
-  {
-    DeQueueNode_t *tmp = deque->rear->next;
+  while (deque->rear->next) {
+    DeQueueNode_t* tmp = deque->rear->next;
     free(deque->rear);
     deque->rear = tmp;
   }
@@ -201,8 +183,7 @@ int destory_queue(DeQueue_t *deque)
  * @param deque
  * @return int
  */
-int get_size(DeQueue_t deque)
-{
+int get_size(DeQueue_t deque) {
   return deque.size;
 }
 
@@ -213,7 +194,6 @@ int get_size(DeQueue_t deque)
  * @return true
  * @return false
  */
-bool is_empty(DeQueue_t deque)
-{
+bool is_empty(DeQueue_t deque) {
   return deque.size == 0;
 }

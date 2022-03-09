@@ -1,7 +1,6 @@
 #include "adjacency_matrix.c"
 
-int main()
-{
+int main() {
   int i, j, k, n;
   VertexType v1, v2;
   MGraph g;

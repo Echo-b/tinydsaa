@@ -1,7 +1,6 @@
 #include "deque_linkedlist.c"
 
-int main()
-{
+int main() {
   DeQueue_t deque;
   initDeQueue(&deque);
   push_front(&deque, 1);

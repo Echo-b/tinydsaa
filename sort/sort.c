@@ -13,15 +13,11 @@
  * @param size
  * @return int
  */
-int bubble_sort(ElementType *arr, int size)
-{
+int bubble_sort(ElementType* arr, int size) {
   int change_enable = 0;
-  for (int i = 0; i < size - 1; ++i)
-  {
-    for (int j = 0; j < size - 1 - i; ++j)
-    {
-      if (arr[j] > arr[j + 1])
-      {
+  for (int i = 0; i < size - 1; ++i) {
+    for (int j = 0; j < size - 1 - i; ++j) {
+      if (arr[j] > arr[j + 1]) {
         swap(arr[j], arr[j + 1]);
         change_enable = 1;
       }
@@ -40,13 +36,10 @@ int bubble_sort(ElementType *arr, int size)
  * @param size
  * @return int
  */
-int selection_sort(ElementType *arr, int size)
-{
-  for (int i = 0; i < size - 1; ++i)
-  {
+int selection_sort(ElementType* arr, int size) {
+  for (int i = 0; i < size - 1; ++i) {
     int minindex = i;
-    for (int j = i + 1; j < size; ++j)
-    {
+    for (int j = i + 1; j < size; ++j) {
       if (arr[j] < arr[minindex])
         minindex = j;
     }
@@ -64,14 +57,11 @@ int selection_sort(ElementType *arr, int size)
  * @param size
  * @return int
  */
-int insertion_sort(ElementType *arr, int size)
-{
-  for (int i = 1; i < size; ++i)
-  {
+int insertion_sort(ElementType* arr, int size) {
+  for (int i = 1; i < size; ++i) {
     int key = arr[i];
     int j = i - 1;
-    while ((j >= 0) && (arr[j] > key))
-    {
+    while ((j >= 0) && (arr[j] > key)) {
       arr[j + 1] = arr[j];
       --j;
     }
@@ -88,15 +78,12 @@ int insertion_sort(ElementType *arr, int size)
  * @param size
  * @return int
  */
-int hill_sort(ElementType *arr, int size)
-{
+int hill_sort(ElementType* arr, int size) {
   int hill_increment = size;
   int i, j;
-  do
-  {
+  do {
     hill_increment >>= 1;
-    for (i = hill_increment + 1; i < size; ++i)
-    {
+    for (i = hill_increment + 1; i < size; ++i) {
       int tmp = arr[i];
       for (j = i - hill_increment; (j >= 0) && (tmp < arr[j]); j -= hill_increment)
         arr[j + hill_increment] = arr[j];
@@ -115,17 +102,15 @@ int hill_sort(ElementType *arr, int size)
  * @param size
  * @return int
  */
-int merge_sort(ElementType *arr, int size)
-{
-  ElementType *tmp = (ElementType *)malloc(sizeof(ElementType) * size);
-  if (!tmp)
-  {
+int merge_sort(ElementType* arr, int size) {
+  ElementType* tmp = (ElementType*)malloc(sizeof(ElementType) * size);
+  if (!tmp) {
     printf("malloc failed!\n");
     return ERROR;
   }
 
-  int increment ;
-  for(increment = 1; increment < size; increment += increment){
+  int increment;
+  for (increment = 1; increment < size; increment += increment) {
     // for(int i = 0)
   }
 
@@ -143,8 +128,7 @@ int merge_sort(ElementType *arr, int size)
  * @param right
  * @return int
  */
-void internal_merge_sort(ElementType *arr, ElementType *tmp, int left, int right)
-{
+void internal_merge_sort(ElementType* arr, ElementType* tmp, int left, int right) {
   if (left >= right)
     return;
   int middle = left + (right - left) >> 1;
@@ -163,8 +147,7 @@ void internal_merge_sort(ElementType *arr, ElementType *tmp, int left, int right
  * @param right
  * @return int
  */
-void merge_sorted_array(ElementType *arr, ElementType *tmp, int left, int middle, int right)
-{
+void merge_sorted_array(ElementType* arr, ElementType* tmp, int left, int middle, int right) {
   int index = 0;
   int i = left;
   int j = middle + 1;
@@ -178,28 +161,22 @@ void merge_sorted_array(ElementType *arr, ElementType *tmp, int left, int middle
     arr[left + k] = tmp[k];
 }
 
-int quick_sort(ElementType *arr, int size)
-{
+int quick_sort(ElementType* arr, int size) {
 }
 
-int heap_sort(ElementType *arr, int size)
-{
+int heap_sort(ElementType* arr, int size) {
 }
 
-int count_sort(ElementType *arr, int size)
-{
+int count_sort(ElementType* arr, int size) {
 }
 
-int bucket_sort(ElementType *arr, int size)
-{
+int bucket_sort(ElementType* arr, int size) {
 }
 
-int radix_sort(ElementType *arr, int size)
-{
+int radix_sort(ElementType* arr, int size) {
 }
 
-void dispaly(ElementType *arr, int size)
-{
+void dispaly(ElementType* arr, int size) {
   for (int i = 0; i < size; ++i)
     printf("%d ", arr[i]);
   printf("\n");

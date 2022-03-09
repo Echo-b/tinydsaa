@@ -1,8 +1,7 @@
 #include "define.h"
 #include "thread_tree.c"
 
-int main()
-{
+int main() {
   ptr_thread_tree tree;
   tree = insert(tree, 8);
   tree = insert(tree, 2);

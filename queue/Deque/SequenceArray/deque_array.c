@@ -6,11 +6,9 @@
  * @param deque
  * @return int
  */
-int initDeQueue(DeQueue_t *deque)
-{
-  deque->base = (ElementType *)malloc(sizeof(ElementType) * MAXSIZE);
-  if (!deque->base)
-  {
+int initDeQueue(DeQueue_t* deque) {
+  deque->base = (ElementType*)malloc(sizeof(ElementType) * MAXSIZE);
+  if (!deque->base) {
     printf("malloc failed!\n");
     return ERROR;
   }
@@ -27,10 +25,8 @@ int initDeQueue(DeQueue_t *deque)
  * @param e
  * @return int
  */
-int push_front(DeQueue_t *deque, ElementType e)
-{
-  if (deque->front == -1)
-  {
+int push_front(DeQueue_t* deque, ElementType e) {
+  if (deque->front == -1) {
     printf("the deque front part is full!\n");
     return ERROR;
   }
@@ -46,10 +42,8 @@ int push_front(DeQueue_t *deque, ElementType e)
  * @param e
  * @return int
  */
-int pop_front(DeQueue_t *deque, ElementType *e)
-{
-  if (deque->front == (HALFMAXSIZE - 1))
-  {
+int pop_front(DeQueue_t* deque, ElementType* e) {
+  if (deque->front == (HALFMAXSIZE - 1)) {
     printf("the front part is empty!\n");
     return ERROR;
   }
@@ -65,10 +59,8 @@ int pop_front(DeQueue_t *deque, ElementType *e)
  * @param e
  * @return int
  */
-int push_back(DeQueue_t *deque, ElementType e)
-{
-  if (deque->rear == MAXSIZE)
-  {
+int push_back(DeQueue_t* deque, ElementType e) {
+  if (deque->rear == MAXSIZE) {
     printf("the deque rear part is full!\n");
     return ERROR;
   }
@@ -84,10 +76,8 @@ int push_back(DeQueue_t *deque, ElementType e)
  * @param e
  * @return int
  */
-int pop_back(DeQueue_t *deque, ElementType *e)
-{
-  if (deque->rear == (HALFMAXSIZE))
-  {
+int pop_back(DeQueue_t* deque, ElementType* e) {
+  if (deque->rear == (HALFMAXSIZE)) {
     printf("the rear part is empty!\n");
     return ERROR;
   }
@@ -103,10 +93,8 @@ int pop_back(DeQueue_t *deque, ElementType *e)
  * @param e
  * @return int
  */
-int front(DeQueue_t deque, ElementType *e)
-{
-  if (deque.front == (HALFMAXSIZE - 1))
-  {
+int front(DeQueue_t deque, ElementType* e) {
+  if (deque.front == (HALFMAXSIZE - 1)) {
     printf("the front part is empty!\n");
     return ERROR;
   }
@@ -122,10 +110,8 @@ int front(DeQueue_t deque, ElementType *e)
  * @param e
  * @return int
  */
-int back(DeQueue_t deque, ElementType *e)
-{
-  if (deque.rear == (HALFMAXSIZE))
-  {
+int back(DeQueue_t deque, ElementType* e) {
+  if (deque.rear == (HALFMAXSIZE)) {
     printf("the rear part is empty!\n");
     return ERROR;
   }
@@ -140,8 +126,7 @@ int back(DeQueue_t deque, ElementType *e)
  * @param deque
  * @return int
  */
-int clear_queue(DeQueue_t *deque)
-{
+int clear_queue(DeQueue_t* deque) {
   deque->base = nullptr;
   deque->front = 0;
   deque->rear = 0;
@@ -155,8 +140,7 @@ int clear_queue(DeQueue_t *deque)
  * @param deque
  * @return int
  */
-int destory_queue(DeQueue_t *deque)
-{
+int destory_queue(DeQueue_t* deque) {
   free(deque->base);
   printf("destory the deque successful!\n");
   return OK;
@@ -168,8 +152,7 @@ int destory_queue(DeQueue_t *deque)
  * @param deque
  * @return int
  */
-int get_size(DeQueue_t deque)
-{
+int get_size(DeQueue_t deque) {
   return deque.rear - deque.front - 1;
 }
 
@@ -180,8 +163,7 @@ int get_size(DeQueue_t deque)
  * @return true
  * @return false
  */
-bool is_empty(DeQueue_t deque)
-{
+bool is_empty(DeQueue_t deque) {
   if (deque.rear == (HALFMAXSIZE) && deque.front == (HALFMAXSIZE - 1))
     return true;
   else

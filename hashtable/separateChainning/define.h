@@ -1,10 +1,10 @@
 #ifndef _HASH_TABLE_
 #define _HASH_TABLE_
 
+#include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 #define ERROR 0
 #define OK 1
@@ -13,22 +13,20 @@
 typedef int ElementType;
 
 struct listNode;
-typedef struct listNode *list;
+typedef struct listNode* list;
 struct hashTbl;
-typedef struct hashTbl *hashTable;
+typedef struct hashTbl* hashTable;
 
 #define minTableSize 10
 
-struct listNode
-{
+struct listNode {
   ElementType data;
   list next;
 };
 
-struct hashTbl
-{
+struct hashTbl {
   int tablesize;
-  list *theLists;
+  list* theLists;
 };
 
 hashTable init(unsigned int table_size);

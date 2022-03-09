@@ -1,9 +1,9 @@
 #ifndef _AVL_TREE_
 #define _AVL_TREE_
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 #define ERROR 0
 #define OK 1
@@ -13,18 +13,17 @@ typedef int ElementType;
 
 struct AvlNode;
 typedef struct AvlNode AvlNode_t;
-typedef struct AvlNode *Position;
-typedef struct AvlNode *ptr_avltree;
+typedef struct AvlNode* Position;
+typedef struct AvlNode* ptr_avltree;
 
-struct AvlNode
-{
+struct AvlNode {
   ElementType data;
   ptr_avltree lchild;
   ptr_avltree rchild;
   int height;
 };
 
-#define MAX(x, y) (((x) > (y))? (x) : (y))
+#define MAX(x, y) (((x) > (y)) ? (x) : (y))
 
 void make_empty(ptr_avltree t);
 int height(ptr_avltree t);

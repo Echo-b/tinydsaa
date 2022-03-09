@@ -1,7 +1,6 @@
 #include "avl_tree.c"
 
-int main()
-{
+int main() {
   ptr_avltree tree;
   tree = insert(tree, 10);
   tree = insert(tree, 8);

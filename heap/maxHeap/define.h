@@ -1,10 +1,10 @@
 #ifndef _MAX_HEAP_
 #define _MAX_HEAP_
 
+#include <limits.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
-#include <limits.h>
 
 #define ERROR 0
 #define OK 1
@@ -16,11 +16,10 @@
 typedef int ElementType;
 struct maxHeapStruct;
 typedef struct maxHeapStruct maxHeapStruct_t;
-typedef struct maxHeapStruct *ptr_max_heap;
+typedef struct maxHeapStruct* ptr_max_heap;
 
-struct maxHeapStruct
-{
-  ElementType *data;
+struct maxHeapStruct {
+  ElementType* data;
   int capacity;
   int size;
 };

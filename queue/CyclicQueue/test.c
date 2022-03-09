@@ -1,6 +1,5 @@
 #include "queue.c"
-int main()
-{
+int main() {
   SqQueue Q;
   initQueue(&Q);
   push(&Q, 1);

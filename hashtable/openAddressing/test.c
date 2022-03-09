@@ -1,7 +1,6 @@
 #include "openadr_hash.c"
 
-int main()
-{
+int main() {
   hashTable h = init(17);
   insert(h, 23);
   insert(h, 19);

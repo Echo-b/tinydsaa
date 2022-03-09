@@ -1,9 +1,9 @@
 #ifndef _ADJACENCY_LIST_
 #define _ADJACENCY_LIST_
 
-#include <stdlib.h>
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "../queue/define.h"
 #include "../queue/queue.c"
@@ -15,8 +15,7 @@
 #define nullptr NULL
 
 #define MAX_VERTEX_NUM 30
-typedef enum graphKind
-{
+typedef enum graphKind {
   DG,
   DN,
   AG,
@@ -34,25 +33,23 @@ typedef struct ArcNode ArcNode;
  * nextarc => pointer to next vertex node
  * info => vertex node value
  */
-struct ArcNode
-{
+struct ArcNode {
   int adjvex;
-  ArcNode *nextarc;
+  ArcNode* nextarc;
   int info;
 };
 
 struct VNode;
-typedef struct VNode *Adjlist;
+typedef struct VNode* Adjlist;
 
 /**
  * @brief
  * data => arc head
  * firstarc => pointer to the association vertex node
  */
-struct VNode
-{
+struct VNode {
   VertexType data;
-  ArcNode *firstarc;
+  ArcNode* firstarc;
 };
 
 struct AlGraph;
@@ -65,8 +62,7 @@ typedef struct AlGraph AlGraph;
  * arcnum => arc node nums
  * kind => the type of the graph
  */
-struct AlGraph
-{
+struct AlGraph {
   Adjlist vertices;
   int vexnum;
   int arcnum;
@@ -74,15 +70,15 @@ struct AlGraph
 };
 
 int locate_vex(AlGraph G, VertexType u);
-int create_graph(AlGraph *G);
-void destory_graph(AlGraph *G);
-int put_vex(AlGraph *G, VertexType v, VertexType value);
+int create_graph(AlGraph* G);
+void destory_graph(AlGraph* G);
+int put_vex(AlGraph* G, VertexType v, VertexType value);
 int first_adjvex(AlGraph G, VertexType v);
 int next_adjvex(AlGraph G, VertexType v, VertexType w);
-int insert_vex(AlGraph *G, VertexType v);
-int delete_vex(AlGraph *G, VertexType v);
-int insert_arc(AlGraph *G, VertexType v, VertexType w);
-int delete_arc(AlGraph *G, VertexType v, VertexType w);
+int insert_vex(AlGraph* G, VertexType v);
+int delete_vex(AlGraph* G, VertexType v);
+int insert_arc(AlGraph* G, VertexType v, VertexType w);
+int delete_arc(AlGraph* G, VertexType v, VertexType w);
 void dfs(AlGraph G, int i);
 void dfs_traverse(AlGraph G);
 void bfs_traverse(AlGraph G);

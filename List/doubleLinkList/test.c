@@ -1,7 +1,6 @@
 #include "double_linked_list.c"
 
-int main()
-{
+int main() {
   doublelinkNode_t head;
   head = *initDoubleLinkedList();
   add(&head, 1, 1);

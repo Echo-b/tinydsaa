@@ -1,7 +1,6 @@
 #include "linked_list_stack.c"
 
-int main()
-{
+int main() {
   linkedListStack_t s;
   initLinkedStack(&s);
   push(&s, 1);

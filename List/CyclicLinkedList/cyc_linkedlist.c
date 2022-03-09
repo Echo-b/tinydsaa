@@ -6,8 +6,7 @@
  * @param l
  * @return int
  */
-ptr_cyclinklist init()
-{
+ptr_cyclinklist init() {
   ptr_cyclinklist l = (ptr_cyclinklist)malloc(sizeof(CycLNode_t));
   if (!l)
     return nullptr;
@@ -22,12 +21,10 @@ ptr_cyclinklist init()
  * @param l
  * @return int
  */
-int destory(ptr_cyclinklist l)
-{
+int destory(ptr_cyclinklist l) {
   ptr_cyclinklist p, q;
   p = l->next;
-  while (p != l)
-  {
+  while (p != l) {
     q = p->next;
     free(p);
     p = q;
@@ -44,8 +41,7 @@ int destory(ptr_cyclinklist l)
  * @return true
  * @return false
  */
-bool list_empty(ptr_cyclinklist l)
-{
+bool list_empty(ptr_cyclinklist l) {
   if (l->next == l)
     return true;
   else
@@ -60,13 +56,11 @@ bool list_empty(ptr_cyclinklist l)
  * @param e
  * @return int
  */
-int get_elem(ptr_cyclinklist l, int loc, ElementType *e)
-{
+int get_elem(ptr_cyclinklist l, int loc, ElementType* e) {
   ptr_cyclinklist p;
   int cur_loc = 1;
   p = l->next;
-  while (p != l && cur_loc < loc)
-  {
+  while (p != l && cur_loc < loc) {
     p = p->next;
     ++cur_loc;
   }
@@ -85,13 +79,11 @@ int get_elem(ptr_cyclinklist l, int loc, ElementType *e)
  * @param e
  * @return int
  */
-int insert(ptr_cyclinklist l, int loc, ElementType e)
-{
+int insert(ptr_cyclinklist l, int loc, ElementType e) {
   ptr_cyclinklist p, s;
   int cur_loc = 0;
   p = l;
-  while (p->next != l && cur_loc < loc - 1)
-  {
+  while (p->next != l && cur_loc < loc - 1) {
     p = p->next;
     ++cur_loc;
   }
@@ -115,13 +107,11 @@ int insert(ptr_cyclinklist l, int loc, ElementType e)
  * @param e
  * @return int
  */
-int del(ptr_cyclinklist l, int loc, ElementType *e)
-{
+int del(ptr_cyclinklist l, int loc, ElementType* e) {
   int cur_loc = 0;
   ptr_cyclinklist p, q;
   p = l;
-  while (p->next != l && cur_loc < loc - 1)
-  {
+  while (p->next != l && cur_loc < loc - 1) {
     p = p->next;
     ++cur_loc;
   }
@@ -141,12 +131,10 @@ int del(ptr_cyclinklist l, int loc, ElementType *e)
  * @param l
  * @return int
  */
-int len(CycLNode_t l)
-{
+int len(CycLNode_t l) {
   ptr_cyclinklist tmp = &l;
   int len = 0;
-  while (tmp->next != &l)
-  {
+  while (tmp->next != &l) {
     ++len;
     tmp = tmp->next;
   }

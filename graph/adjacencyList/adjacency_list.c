@@ -7,13 +7,10 @@
  * @param u
  * @return int
  */
-int locate_vex(AlGraph G, VertexType u)
-{
+int locate_vex(AlGraph G, VertexType u) {
   int loc = -1;
-  for (int i = 0; i < G.vexnum; ++i)
-  {
-    if (!strcmp(G.vertices[i].data, u))
-    {
+  for (int i = 0; i < G.vexnum; ++i) {
+    if (!strcmp(G.vertices[i].data, u)) {
       loc = i;
       break;
     }
@@ -22,15 +19,13 @@ int locate_vex(AlGraph G, VertexType u)
   return loc;
 }
 
-int create_graph(AlGraph *G)
-{
+int create_graph(AlGraph* G) {
   VertexType va, vb;
-  ArcNode *p;
+  ArcNode* p;
   int weight;
   G->kind = DN;
   G->vertices = (Adjlist)malloc(sizeof(struct VNode) * MAX_VERTEX_NUM);
-  if (!G->vertices)
-  {
+  if (!G->vertices) {
     printf("malloc failed!\n");
     return ERROR;
   }
@@ -39,18 +34,16 @@ int create_graph(AlGraph *G)
   printf("please input the arcnum!\n");
   scanf("%d", &G->arcnum);
   printf("please input the %d vertex num value\n", G->vexnum);
-  for (int i = 0; i < G->vexnum; ++i)
-  {
+  for (int i = 0; i < G->vexnum; ++i) {
     scanf("%s", G->vertices[i].data);
     G->vertices[i].firstarc = nullptr;
   }
   printf("please input the every arc head tail weight!\n");
-  for (int j = 0; j < G->arcnum; ++j)
-  {
+  for (int j = 0; j < G->arcnum; ++j) {
     scanf("%s%s%d", va, vb, &weight);
     int i = locate_vex(*G, va);
     int j = locate_vex(*G, vb);
-    p = (ArcNode *)malloc(sizeof(ArcNode));
+    p = (ArcNode*)malloc(sizeof(ArcNode));
     p->adjvex = j;
     p->info = weight;
     p->nextarc = G->vertices[i].firstarc;
@@ -65,14 +58,11 @@ int create_graph(AlGraph *G)
  *
  * @param G
  */
-void destory_graph(AlGraph *G)
-{
-  for (int i = 0; i < G->vexnum; ++i)
-  {
-    ArcNode *p = G->vertices[i].firstarc;
-    while (p)
-    {
-      ArcNode *tmp = p->nextarc;
+void destory_graph(AlGraph* G) {
+  for (int i = 0; i < G->vexnum; ++i) {
+    ArcNode* p = G->vertices[i].firstarc;
+    while (p) {
+      ArcNode* tmp = p->nextarc;
       free(p);
       p = tmp;
     }
@@ -91,11 +81,9 @@ void destory_graph(AlGraph *G)
  * @param value
  * @return int
  */
-int put_vex(AlGraph *G, VertexType v, VertexType value)
-{
+int put_vex(AlGraph* G, VertexType v, VertexType value) {
   int loc_v = locate_vex(*G, v);
-  if (loc_v < 0)
-  {
+  if (loc_v < 0) {
     printf("can't find the vertex node location!\n");
     return ERROR;
   }
@@ -111,15 +99,13 @@ int put_vex(AlGraph *G, VertexType v, VertexType value)
  * @param v
  * @return int
  */
-int first_adjvex(AlGraph G, VertexType v)
-{
+int first_adjvex(AlGraph G, VertexType v) {
   int loc_v = locate_vex(G, v);
-  if (loc_v < 0)
-  {
+  if (loc_v < 0) {
     printf("can't find the vertex node location!\n");
     return ERROR;
   }
-  ArcNode *p = G.vertices[loc_v].firstarc;
+  ArcNode* p = G.vertices[loc_v].firstarc;
   int res = -1;
   if (p)
     res = p->adjvex;
@@ -135,17 +121,15 @@ int first_adjvex(AlGraph G, VertexType v)
  * @param w
  * @return int
  */
-int next_adjvex(AlGraph G, VertexType v, VertexType w)
-{
+int next_adjvex(AlGraph G, VertexType v, VertexType w) {
   int loc_v = locate_vex(G, v);
   int loc_w = locate_vex(G, w);
-  if (loc_v < 0 || loc_w < 0)
-  {
+  if (loc_v < 0 || loc_w < 0) {
     printf("can't find the vertex node location!\n");
     return ERROR;
   }
   int res;
-  ArcNode *p = G.vertices[loc_v].firstarc;
+  ArcNode* p = G.vertices[loc_v].firstarc;
   while (p && p->adjvex != loc_w)
     p = p->nextarc;
   if (!p || !p->nextarc)
@@ -162,11 +146,9 @@ int next_adjvex(AlGraph G, VertexType v, VertexType w)
  * @param G
  * @param v
  */
-int insert_vex(AlGraph *G, VertexType v)
-{
+int insert_vex(AlGraph* G, VertexType v) {
   int loc_v = locate_vex(*G, v);
-  if (loc_v != -1)
-  {
+  if (loc_v != -1) {
     printf("have the same node\n");
     return ERROR;
   }
@@ -177,18 +159,15 @@ int insert_vex(AlGraph *G, VertexType v)
   return OK;
 }
 
-int delete_vex(AlGraph *G, VertexType v)
-{
+int delete_vex(AlGraph* G, VertexType v) {
   int loc_v = locate_vex(*G, v);
-  if (loc_v < 0)
-  {
+  if (loc_v < 0) {
     printf("can't find the vertex node location!\n");
     return ERROR;
   }
-  ArcNode *p = G->vertices[loc_v].firstarc;
-  ArcNode *tmp = nullptr;
-  while (p)
-  {
+  ArcNode* p = G->vertices[loc_v].firstarc;
+  ArcNode* tmp = nullptr;
+  while (p) {
     tmp = p;
     p = p->nextarc;
     free(tmp);
@@ -198,32 +177,23 @@ int delete_vex(AlGraph *G, VertexType v)
   for (int i = loc_v; i < G->vexnum; ++i)
     G->vertices[i] = G->vertices[i + 1];
 
-  for (int i = 0; i < G->vexnum; ++i)
-  {
+  for (int i = 0; i < G->vexnum; ++i) {
     p = G->vertices[i].firstarc;
-    while (p)
-    {
-      if (p->adjvex == loc_v)
-      {
-        if (p == G->vertices[i].firstarc)
-        {
+    while (p) {
+      if (p->adjvex == loc_v) {
+        if (p == G->vertices[i].firstarc) {
           G->vertices[i].firstarc = p->nextarc;
           free(p);
           p = G->vertices[i].firstarc;
           --G->arcnum;
-        }
-        else
-        {
+        } else {
           tmp->nextarc = p->nextarc;
           free(p);
           p = tmp->nextarc;
           --G->arcnum;
         }
-      }
-      else
-      {
-        if (p->adjvex > loc_v)
-        {
+      } else {
+        if (p->adjvex > loc_v) {
           --p->adjvex;
         }
         tmp = p;
@@ -243,12 +213,10 @@ int delete_vex(AlGraph *G, VertexType v)
  * @param w
  * @return int
  */
-int insert_arc(AlGraph *G, VertexType v, VertexType w)
-{
+int insert_arc(AlGraph* G, VertexType v, VertexType w) {
   int loc_v = locate_vex(*G, v);
   int loc_w = locate_vex(*G, w);
-  if (loc_v < 0 || loc_w < 0)
-  {
+  if (loc_v < 0 || loc_w < 0) {
     printf("can't find the vertex node location!\n");
     return ERROR;
   }
@@ -256,9 +224,8 @@ int insert_arc(AlGraph *G, VertexType v, VertexType w)
   printf("please input the arc v->w's weight\n");
   int weight;
   scanf("%d", &weight);
-  ArcNode *p = (ArcNode *)malloc(sizeof(ArcNode));
-  if (!p)
-  {
+  ArcNode* p = (ArcNode*)malloc(sizeof(ArcNode));
+  if (!p) {
     printf("malloc failed!\n");
     return ERROR;
   }
@@ -278,24 +245,20 @@ int insert_arc(AlGraph *G, VertexType v, VertexType w)
  * @param w
  * @return int
  */
-int delete_arc(AlGraph *G, VertexType v, VertexType w)
-{
+int delete_arc(AlGraph* G, VertexType v, VertexType w) {
   int loc_v = locate_vex(*G, v);
   int loc_w = locate_vex(*G, w);
-  if (loc_v < 0 || loc_w < 0)
-  {
+  if (loc_v < 0 || loc_w < 0) {
     printf("can't find the vertex node location!\n");
     return ERROR;
   }
-  ArcNode *p = G->vertices[loc_v].firstarc;
-  ArcNode *tmp;
-  while (p && p->adjvex != loc_w)
-  {
+  ArcNode* p = G->vertices[loc_v].firstarc;
+  ArcNode* tmp;
+  while (p && p->adjvex != loc_w) {
     tmp = p;
     p = p->nextarc;
   }
-  if (p && p->adjvex == loc_w)
-  {
+  if (p && p->adjvex == loc_w) {
     if (p == G->vertices[loc_v].firstarc)
       G->vertices[loc_v].firstarc = p->nextarc;
     else
@@ -314,13 +277,11 @@ bool visited[MAX_VERTEX_NUM];
  * @param G
  * @param i
  */
-void dfs(AlGraph G, int i)
-{
+void dfs(AlGraph G, int i) {
   visited[i] = true;
   printf("%s ", G.vertices[i].data);
-  ArcNode *p = G.vertices[i].firstarc;
-  while (p)
-  {
+  ArcNode* p = G.vertices[i].firstarc;
+  while (p) {
     if (!visited[p->adjvex])
       dfs(G, p->adjvex);
     p = p->nextarc;
@@ -332,12 +293,10 @@ void dfs(AlGraph G, int i)
  *
  * @param G
  */
-void dfs_traverse(AlGraph G)
-{
+void dfs_traverse(AlGraph G) {
   for (int i = 0; i < G.vexnum; ++i)
     visited[i] = false;
-  for (int i = 0; i < G.vexnum; ++i)
-  {
+  for (int i = 0; i < G.vexnum; ++i) {
     if (!visited[i])
       dfs(G, i);
   }
@@ -348,27 +307,21 @@ void dfs_traverse(AlGraph G)
  *
  * @param G
  */
-void bfs_traverse(AlGraph G)
-{
+void bfs_traverse(AlGraph G) {
   SqQueue Q;
   initQueue(&Q);
   for (int i = 0; i < G.vexnum; ++i)
     visited[i] = false;
-  for (int i = 0; i < G.vexnum; ++i)
-  {
-    if (!visited[i])
-    {
+  for (int i = 0; i < G.vexnum; ++i) {
+    if (!visited[i]) {
       visited[i] = true;
       printf("%s ", G.vertices[i].data);
       push(&Q, i);
-      while (!is_empty(Q))
-      {
+      while (!is_empty(Q)) {
         pop(&Q, &i);
-        ArcNode *p = G.vertices[i].firstarc;
-        while (p)
-        {
-          if (!visited[p->adjvex])
-          {
+        ArcNode* p = G.vertices[i].firstarc;
+        while (p) {
+          if (!visited[p->adjvex]) {
             visited[p->adjvex] = true;
             printf("%s ", G.vertices[p->adjvex].data);
             push(&Q, p->adjvex);
@@ -387,14 +340,11 @@ int indegree[MAX_VERTEX_NUM] = {0};
  *
  * @param G
  */
-void find_indegree(AlGraph G)
-{
-  ArcNode *p;
-  for (int i = 0; i < G.vexnum; ++i)
-  {
+void find_indegree(AlGraph G) {
+  ArcNode* p;
+  for (int i = 0; i < G.vexnum; ++i) {
     p = G.vertices[i].firstarc;
-    while (p)
-    {
+    while (p) {
       indegree[p->adjvex]++;
       p = p->nextarc;
     }
@@ -406,26 +356,22 @@ void find_indegree(AlGraph G)
  *
  * @param G
  */
-void topologicalsort(AlGraph G)
-{
+void topologicalsort(AlGraph G) {
   find_indegree(G);
   SqStack s;
   ElementType pop_index;
   initStack(&s);
   int count = 0;
-  ArcNode *p;
-  for (int i = 0; i < G.vexnum; ++i)
-  {
+  ArcNode* p;
+  for (int i = 0; i < G.vexnum; ++i) {
     if (!indegree[i])
       push_s(&s, i);
   }
-  while (!is_empty_stack(s))
-  {
+  while (!is_empty_stack(s)) {
     pop_s(&s, &pop_index);
     printf("%s ", G.vertices[pop_index].data);
     ++count;
-    for (p = G.vertices[pop_index].firstarc; p; p = p->nextarc)
-    {
+    for (p = G.vertices[pop_index].firstarc; p; p = p->nextarc) {
       int push_index = p->adjvex;
       if (!(--indegree[push_index]))
         push_s(&s, push_index);
@@ -440,15 +386,12 @@ void topologicalsort(AlGraph G)
  *
  * @param G
  */
-void display(AlGraph G)
-{
+void display(AlGraph G) {
   printf("the vertex and the node is as follow!\n");
-  for (int i = 0; i < G.vexnum; ++i)
-  {
+  for (int i = 0; i < G.vexnum; ++i) {
     printf("the [%d] vertex is [%s] the arc is =>\n", i + 1, G.vertices[i].data);
-    ArcNode *p = G.vertices[i].firstarc;
-    while (p)
-    {
+    ArcNode* p = G.vertices[i].firstarc;
+    while (p) {
       printf("=> the vertex node name is [%s] , the weight is [%d]\n",
              G.vertices[p->adjvex].data, p->info);
       p = p->nextarc;

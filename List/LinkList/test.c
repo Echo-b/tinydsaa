@@ -1,7 +1,6 @@
 #include "linked_list.c"
 
-int main()
-{
+int main() {
   linkNode_t linked_list;
   linked_list = *initLinkedList();
   add(&linked_list, 1, 1);

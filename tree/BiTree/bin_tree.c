@@ -9,20 +9,16 @@
  * @param e
  * @return ptr_binary_tree
  */
-ptr_binary_tree insert(ptr_binary_tree bin_tree, DataType e)
-{
-  if (!bin_tree)
-  {
+ptr_binary_tree insert(ptr_binary_tree bin_tree, DataType e) {
+  if (!bin_tree) {
     bin_tree = malloc(sizeof(struct BinTreeNode));
-    if (!bin_tree)
-    {
+    if (!bin_tree) {
       printf("malloc failed!\n");
       return nullptr;
     }
     bin_tree->elm = e;
     bin_tree->lchild = bin_tree->rchild = nullptr;
-  }
-  else if (e < bin_tree->elm)
+  } else if (e < bin_tree->elm)
     bin_tree->lchild = insert(bin_tree->lchild, e);
   else
     bin_tree->rchild = insert(bin_tree->rchild, e);
@@ -34,10 +30,8 @@ ptr_binary_tree insert(ptr_binary_tree bin_tree, DataType e)
  *
  * @param bin_tree
  */
-void postorder(ptr_binary_tree bin_tree)
-{
-  if (bin_tree)
-  {
+void postorder(ptr_binary_tree bin_tree) {
+  if (bin_tree) {
     preorder(bin_tree->lchild);
     preorder(bin_tree->rchild);
     visit(bin_tree);
@@ -49,10 +43,8 @@ void postorder(ptr_binary_tree bin_tree)
  *
  * @param bin_tree
  */
-void inorder(ptr_binary_tree bin_tree)
-{
-  if (bin_tree)
-  {
+void inorder(ptr_binary_tree bin_tree) {
+  if (bin_tree) {
     preorder(bin_tree->lchild);
     visit(bin_tree);
     preorder(bin_tree->rchild);
@@ -64,10 +56,8 @@ void inorder(ptr_binary_tree bin_tree)
  *
  * @param bin_tree
  */
-void preorder(ptr_binary_tree bin_tree)
-{
-  if (bin_tree)
-  {
+void preorder(ptr_binary_tree bin_tree) {
+  if (bin_tree) {
     visit(bin_tree);
     preorder(bin_tree->lchild);
     preorder(bin_tree->rchild);
@@ -79,10 +69,8 @@ void preorder(ptr_binary_tree bin_tree)
  *
  * @param bin_tree
  */
-void levelorder(ptr_binary_tree bin_tree)
-{
-  if (!bin_tree)
-  {
+void levelorder(ptr_binary_tree bin_tree) {
+  if (!bin_tree) {
     printf("the tree is empty!\n");
     return;
   }
@@ -90,8 +78,7 @@ void levelorder(ptr_binary_tree bin_tree)
   ptr_binary_tree e;
   initQueue(&Q);
   push(&Q, bin_tree);
-  while (!is_empty(Q))
-  {
+  while (!is_empty(Q)) {
     pop(&Q, &e);
     visit(e);
     if (e->lchild)
@@ -106,7 +93,9 @@ void levelorder(ptr_binary_tree bin_tree)
  *
  * @param bin_tree
  */
-void visit(ptr_binary_tree bin_tree) { printf("%3d", bin_tree->elm); }
+void visit(ptr_binary_tree bin_tree) {
+  printf("%3d", bin_tree->elm);
+}
 
 /**
  * @brief
@@ -114,10 +103,8 @@ void visit(ptr_binary_tree bin_tree) { printf("%3d", bin_tree->elm); }
  * @param bin_tree
  * @return int
  */
-int destory_tree(ptr_binary_tree bin_tree)
-{
-  if (bin_tree)
-  {
+int destory_tree(ptr_binary_tree bin_tree) {
+  if (bin_tree) {
     destory_tree(bin_tree->lchild);
     destory_tree(bin_tree->rchild);
     free(bin_tree);
@@ -132,12 +119,10 @@ int destory_tree(ptr_binary_tree bin_tree)
  * @param bin_tree
  * @return int
  */
-int depth(ptr_binary_tree bin_tree)
-{
+int depth(ptr_binary_tree bin_tree) {
   if (!bin_tree)
     return 0;
-  else
-  {
+  else {
     int rdepth = depth(bin_tree->rchild);
     int ldepth = depth(bin_tree->lchild);
     return rdepth > ldepth ? rdepth + 1 : ldepth + 1;
@@ -150,8 +135,7 @@ int depth(ptr_binary_tree bin_tree)
  * @param bin_tree
  * @return ptr_binary_tree
  */
-ptr_binary_tree findmin(ptr_binary_tree bin_tree)
-{
+ptr_binary_tree findmin(ptr_binary_tree bin_tree) {
   /*******  recursive code ******
    *if (!bin_tree)
    *  return nullptr;
@@ -173,8 +157,7 @@ ptr_binary_tree findmin(ptr_binary_tree bin_tree)
  * @param bin_tree
  * @return ptr_binary_tree
  */
-ptr_binary_tree findmax(ptr_binary_tree bin_tree)
-{
+ptr_binary_tree findmax(ptr_binary_tree bin_tree) {
   /*******  recursive code ******
    *if (!bin_tree)
    *  return nullptr;
@@ -197,8 +180,7 @@ ptr_binary_tree findmax(ptr_binary_tree bin_tree)
  * @param e
  * @return ptr_binary_tree
  */
-ptr_binary_tree find(ptr_binary_tree bin_tree, DataType e)
-{
+ptr_binary_tree find(ptr_binary_tree bin_tree, DataType e) {
   if (!bin_tree)
     return nullptr;
   if (bin_tree->elm == e)
@@ -216,8 +198,7 @@ ptr_binary_tree find(ptr_binary_tree bin_tree, DataType e)
  * @param e
  * @return int
  */
-ptr_binary_tree del(ptr_binary_tree bin_tree, DataType e)
-{
+ptr_binary_tree del(ptr_binary_tree bin_tree, DataType e) {
   ptr_binary_tree tmp;
   if (!(bin_tree))
     printf("the tree is empty!\n");
@@ -225,14 +206,11 @@ ptr_binary_tree del(ptr_binary_tree bin_tree, DataType e)
     bin_tree->lchild = del(bin_tree->lchild, e);
   else if (e > bin_tree->elm)
     bin_tree->rchild = del(bin_tree->rchild, e);
-  else if (bin_tree->lchild && bin_tree->rchild)
-  {
+  else if (bin_tree->lchild && bin_tree->rchild) {
     tmp = findmin(bin_tree->rchild);
     bin_tree->elm = tmp->elm;
     bin_tree->rchild = del(bin_tree->rchild, bin_tree->elm);
-  }
-  else
-  {
+  } else {
     tmp = bin_tree;
     if (!bin_tree->lchild)
       bin_tree = bin_tree->rchild;

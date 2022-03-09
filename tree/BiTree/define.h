@@ -11,14 +11,13 @@
 
 typedef int DataType;
 struct BinTreeNode;
-typedef struct BinTreeNode *ptr_binary_tree;
-typedef struct BinTreeNode *position;
+typedef struct BinTreeNode* ptr_binary_tree;
+typedef struct BinTreeNode* position;
 
-typedef struct BinTreeNode
-{
+typedef struct BinTreeNode {
   DataType elm;
-  struct BinTreeNode *lchild;
-  struct BinTreeNode *rchild;
+  struct BinTreeNode* lchild;
+  struct BinTreeNode* rchild;
 } BinTreeNode_t;
 
 ptr_binary_tree insert(ptr_binary_tree bin_tree, DataType e);

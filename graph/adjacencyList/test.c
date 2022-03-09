@@ -1,7 +1,6 @@
 #include "adjacency_list.c"
 
-int main()
-{
+int main() {
   VertexType v1, v2;
   AlGraph g;
   create_graph(&g);
@@ -27,8 +26,7 @@ int main()
   printf("\n插入与新顶点有关的弧，请输入弧数: ");
   int n;
   scanf("%d", &n);
-  for (int k = 0; k < n; k++)
-  {
+  for (int k = 0; k < n; k++) {
     printf("\n请输入另一顶点的值: ");
     scanf("%s", v2);
     insert_arc(&g, v2, v1);

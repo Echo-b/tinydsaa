@@ -5,33 +5,27 @@
  *
  * @return hashTable
  */
-hashTable init(unsigned int table_size)
-{
-  if (table_size > minTableSize)
-  {
+hashTable init(unsigned int table_size) {
+  if (table_size > minTableSize) {
     printf("the size is bigger!\n");
     return nullptr;
   }
   hashTable h = (hashTable)malloc(sizeof(struct hashTbl));
-  if (!h)
-  {
+  if (!h) {
     printf("malloc failed!\n");
     return nullptr;
   }
   h->tablesize = next_prime(table_size);
   /* malloc list of array */
-  h->theLists = (list *)malloc(sizeof(struct listNode) * h->tablesize);
-  if (!h->theLists)
-  {
+  h->theLists = (list*)malloc(sizeof(struct listNode) * h->tablesize);
+  if (!h->theLists) {
     printf("malloc failed!\n");
     return nullptr;
   }
   /* malloc list head */
-  for (int i = 0; i < h->tablesize; ++i)
-  {
+  for (int i = 0; i < h->tablesize; ++i) {
     h->theLists[i] = (list)malloc(sizeof(struct listNode));
-    if (!h->theLists[i])
-    {
+    if (!h->theLists[i]) {
       printf("malloc failed!\n");
       return nullptr;
     }
@@ -47,15 +41,12 @@ hashTable init(unsigned int table_size)
  *
  * @param h
  */
-void destory(hashTable h)
-{
+void destory(hashTable h) {
   list l;
   /* first free the list node header */
-  for (int i = 0; i < h->tablesize; ++i)
-  {
+  for (int i = 0; i < h->tablesize; ++i) {
     l = h->theLists[i]->next;
-    while (l)
-    {
+    while (l) {
       list p = l->next;
       free(l);
       l = p;
@@ -76,8 +67,7 @@ void destory(hashTable h)
  * @param key
  * @return list
  */
-list find(hashTable h, ElementType key)
-{
+list find(hashTable h, ElementType key) {
   list l;
   /* find the right list node header */
   l = h->theLists[hashfun(key, h->tablesize)];
@@ -93,14 +83,11 @@ list find(hashTable h, ElementType key)
  * @param h
  * @param key
  */
-void insert(hashTable h, ElementType key)
-{
+void insert(hashTable h, ElementType key) {
   list p = find(h, key);
-  if (!p)
-  {
+  if (!p) {
     list node = (list)malloc(sizeof(struct listNode));
-    if (!node)
-    {
+    if (!node) {
       printf("malloc failed!\n");
       return;
     }
@@ -109,9 +96,7 @@ void insert(hashTable h, ElementType key)
     node->next = l->next;
     l->next = node;
     printf("insert the elem into the hashtable successful!\n");
-  }
-  else
-  {
+  } else {
     printf("the hashtable has the same value node!\n");
     return;
   }
@@ -123,10 +108,8 @@ void insert(hashTable h, ElementType key)
  * @param p
  * @return ElementType
  */
-ElementType retrive(list p)
-{
-  if (!p)
-  {
+ElementType retrive(list p) {
+  if (!p) {
     printf("the list node is nullptr!\n");
     return ERROR;
   }
@@ -140,8 +123,7 @@ ElementType retrive(list p)
  * @param tabel_size
  * @return int
  */
-int hashfun(ElementType key, unsigned int tabel_size)
-{
+int hashfun(ElementType key, unsigned int tabel_size) {
   return key % tabel_size;
 }
 
@@ -152,12 +134,10 @@ int hashfun(ElementType key, unsigned int tabel_size)
  * @return true
  * @return false
  */
-bool isprime(int x)
-{
+bool isprime(int x) {
   if (x < 2)
     return false;
-  for (int i = 2; i < (int)sqrt(x); ++i)
-  {
+  for (int i = 2; i < (int)sqrt(x); ++i) {
     if (x % i == 0)
       return false;
   }
@@ -170,10 +150,8 @@ bool isprime(int x)
  * @param x
  * @return int
  */
-int next_prime(int x)
-{
-  while (true)
-  {
+int next_prime(int x) {
+  while (true) {
     if (isprime(x))
       break;
     ++x;
@@ -186,14 +164,11 @@ int next_prime(int x)
  *
  * @param h
  */
-void display(hashTable h)
-{
-  for (int i = 0; i < h->tablesize; ++i)
-  {
+void display(hashTable h) {
+  for (int i = 0; i < h->tablesize; ++i) {
     list l = h->theLists[i]->next;
     int pos = 1;
-    while (l)
-    {
+    while (l) {
       printf("the header is [%d], and the node is [%d], the node value is [%d]\n", i, pos, l->data);
       ++pos;
       l = l->next;

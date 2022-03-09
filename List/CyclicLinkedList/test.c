@@ -1,7 +1,6 @@
 #include "cyc_linkedlist.c"
 
-int main()
-{
+int main() {
   CycLNode_t l;
   l = *init();
   insert(&l, 1, 1);

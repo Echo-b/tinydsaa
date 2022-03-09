@@ -1,10 +1,10 @@
 #ifndef _BIN_HEAP_
 #define _BIN_HEAP_
 
+#include <limits.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
-#include <limits.h>
 
 #define ERROR 0
 #define OK 1
@@ -16,11 +16,10 @@
 typedef int ElementType;
 struct HeapStruct;
 typedef struct HeapStruct HeapStruct_t;
-typedef struct HeapStruct *ptr_priority_queue;
+typedef struct HeapStruct* ptr_priority_queue;
 
-struct HeapStruct
-{
-  ElementType *data;
+struct HeapStruct {
+  ElementType* data;
   int capacity;
   int size;
 };

@@ -1,7 +1,6 @@
 #include "seq_stack.c"
 
-int main()
-{
+int main() {
   SqStack s;
   initStack(&s);
   push(&s, 1);

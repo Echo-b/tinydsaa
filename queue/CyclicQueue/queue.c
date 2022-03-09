@@ -6,11 +6,9 @@
  * @param Q
  * @return int
  */
-int initQueue(SqQueue *Q)
-{
-  Q->base = (ElementType *)malloc(MAXQSIZE * sizeof(ElementType));
-  if (!Q->base)
-  {
+int initQueue(SqQueue* Q) {
+  Q->base = (ElementType*)malloc(MAXQSIZE * sizeof(ElementType));
+  if (!Q->base) {
     printf("malloc failed!\n");
     return ERROR;
   }
@@ -26,8 +24,7 @@ int initQueue(SqQueue *Q)
  * @param Q
  * @return int
  */
-int get_queue_length(SqQueue Q)
-{
+int get_queue_length(SqQueue Q) {
   return (Q.rear - Q.front + MAXQSIZE) % MAXQSIZE;
 }
 
@@ -38,10 +35,8 @@ int get_queue_length(SqQueue Q)
  * @param e
  * @return int
  */
-int push(SqQueue *Q, ElementType e)
-{
-  if ((Q->rear + 1) % MAXQSIZE == Q->front)
-  {
+int push(SqQueue* Q, ElementType e) {
+  if ((Q->rear + 1) % MAXQSIZE == Q->front) {
     printf("the queue is full!\n");
     return ERROR;
   }
@@ -58,10 +53,8 @@ int push(SqQueue *Q, ElementType e)
  * @param e
  * @return int
  */
-int pop(SqQueue *Q, ElementType *e)
-{
-  if (is_empty(*Q))
-  {
+int pop(SqQueue* Q, ElementType* e) {
+  if (is_empty(*Q)) {
     printf("the queue is empty!\n");
     return ERROR;
   }
@@ -77,11 +70,9 @@ int pop(SqQueue *Q, ElementType *e)
  * @param Q
  * @return int
  */
-bool is_empty(SqQueue Q)
-{
+bool is_empty(SqQueue Q) {
   if (Q.rear == Q.front)
     return true;
   else
     return false;
 }
-

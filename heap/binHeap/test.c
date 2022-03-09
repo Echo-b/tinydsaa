@@ -1,7 +1,6 @@
 #include "binheap.c"
 
-int main()
-{
+int main() {
   ptr_priority_queue h = init();
   insert(h, 21);
   insert(h, 19);

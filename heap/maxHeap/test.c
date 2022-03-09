@@ -1,7 +1,6 @@
 #include "max_heap.c"
 
-int main()
-{
+int main() {
   ptr_max_heap h = init();
   insert(h, 21);
   insert(h, 19);

@@ -10,25 +10,23 @@
 #define OK 1
 
 typedef int DataType;
-typedef enum PointTag
-{
+typedef enum PointTag {
   lINK,
   THREAD
 } PointTag;
 
 struct ThreadNode;
-typedef struct ThreadNode *ptr_thread_tree;
+typedef struct ThreadNode* ptr_thread_tree;
 
-typedef struct ThreadNode
-{
+typedef struct ThreadNode {
   DataType data;
-  struct ThreadNode *lchild;
-  struct ThreadNode *rchild;
+  struct ThreadNode* lchild;
+  struct ThreadNode* rchild;
   PointTag ltag;
   PointTag rtag;
 } ThreadTree_t;
 
-ptr_thread_tree pre = nullptr; // global node ,point to the pre visit node
+ptr_thread_tree pre = nullptr;  // global node ,point to the pre visit node
 
 ptr_thread_tree insert(ptr_thread_tree t, DataType e);
 void postorder(ptr_thread_tree t);

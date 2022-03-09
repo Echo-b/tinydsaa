@@ -5,11 +5,9 @@
  * init the double linked list
  * @return ptr_double_linkedList
  */
-ptr_double_linkedList initDoubleLinkedList()
-{
+ptr_double_linkedList initDoubleLinkedList() {
   ptr_double_linkedList double_linked_list = (ptr_double_linkedList)malloc(sizeof(doublelinkNode_t));
-  if (!double_linked_list)
-  {
+  if (!double_linked_list) {
     printf("malloc failed!\n");
     return nullptr;
   }
@@ -28,23 +26,19 @@ ptr_double_linkedList initDoubleLinkedList()
  * @param loc
  * @return int
  */
-int add(ptr_double_linkedList double_linked_list, ElementType e, int loc)
-{
+int add(ptr_double_linkedList double_linked_list, ElementType e, int loc) {
   int cur_loc = 0;
   ptr_double_linkedList tmp = double_linked_list;
-  while (tmp && cur_loc < loc - 1)
-  {
+  while (tmp && cur_loc < loc - 1) {
     ++cur_loc;
     tmp = tmp->next;
   }
-  if (tmp == nullptr || cur_loc > loc - 1)
-  {
+  if (tmp == nullptr || cur_loc > loc - 1) {
     printf("error location!\n");
     return ERROR;
   }
   ptr_double_linkedList insert_node = (ptr_double_linkedList)malloc(sizeof(doublelinkNode_t));
-  if (!insert_node)
-  {
+  if (!insert_node) {
     printf("malloc failed!\n");
     return ERROR;
   }
@@ -65,22 +59,18 @@ int add(ptr_double_linkedList double_linked_list, ElementType e, int loc)
  * @param loc
  * @return int
  */
-int del(ptr_double_linkedList double_linked_list, int loc, ElementType *e)
-{
-  if (!double_linked_list->next)
-  {
+int del(ptr_double_linkedList double_linked_list, int loc, ElementType* e) {
+  if (!double_linked_list->next) {
     printf("the double linked list is empty!\n");
     return ERROR;
   }
   int cur_loc = 0;
   ptr_double_linkedList tmp = double_linked_list;
-  while (tmp->next && cur_loc < loc - 1)
-  {
+  while (tmp->next && cur_loc < loc - 1) {
     ++cur_loc;
     tmp = tmp->next;
   }
-  if (tmp == nullptr || cur_loc > loc - 1)
-  {
+  if (tmp == nullptr || cur_loc > loc - 1) {
     printf("error location!\n");
     return ERROR;
   }
@@ -99,19 +89,16 @@ int del(ptr_double_linkedList double_linked_list, int loc, ElementType *e)
  * @param e
  * @return int
  */
-int get_location_elem(doublelinkNode_t double_linked_list, int loc, ElementType *e)
-{
+int get_location_elem(doublelinkNode_t double_linked_list, int loc, ElementType* e) {
   ptr_double_linkedList res;
   res = &double_linked_list;
   int cur_loc = 1;
   res = res->next;
-  while (res && cur_loc < loc)
-  {
+  while (res && cur_loc < loc) {
     ++cur_loc;
     res = res->next;
   }
-  if (res == nullptr || cur_loc > loc)
-  {
+  if (res == nullptr || cur_loc > loc) {
     printf("not find the appoint location!\n");
     return ERROR;
   }
@@ -128,18 +115,15 @@ int get_location_elem(doublelinkNode_t double_linked_list, int loc, ElementType 
  * @param e
  * @return doublelinkNode_t
  */
-int get_value_elem(doublelinkNode_t double_linked_list, ElementType e, int *loc)
-{
+int get_value_elem(doublelinkNode_t double_linked_list, ElementType e, int* loc) {
   ptr_double_linkedList res = &double_linked_list;
   int cur_loc = 1;
   res = res->next;
-  while (res && res->data != e)
-  {
+  while (res && res->data != e) {
     ++cur_loc;
     res = res->next;
   }
-  if (res == nullptr)
-  {
+  if (res == nullptr) {
     printf("not find the appoint value node!\n");
     *loc = -1;
     return ERROR;
@@ -157,18 +141,14 @@ int get_value_elem(doublelinkNode_t double_linked_list, ElementType e, int *loc)
  * @param loc
  * @return int
  */
-int modify(ptr_double_linkedList double_linked_list, ElementType e, int loc)
-{
-
+int modify(ptr_double_linkedList double_linked_list, ElementType e, int loc) {
   ptr_double_linkedList tmp = double_linked_list->next;
   int cur_loc = 1;
-  while (tmp && cur_loc < loc)
-  {
+  while (tmp && cur_loc < loc) {
     ++cur_loc;
     tmp = tmp->next;
   }
-  if (tmp == nullptr)
-  {
+  if (tmp == nullptr) {
     printf("not find the modify value\n");
     return ERROR;
   }
@@ -183,13 +163,11 @@ int modify(ptr_double_linkedList double_linked_list, ElementType e, int loc)
  * @param linked_list
  * @return int
  */
-int get_double_linked_list_length(doublelinkNode_t double_linked_list)
-{
+int get_double_linked_list_length(doublelinkNode_t double_linked_list) {
   ptr_double_linkedList tmp = &double_linked_list;
   int len = 0;
-  tmp = tmp->next; // pass by the head node
-  while (tmp)
-  {
+  tmp = tmp->next;  // pass by the head node
+  while (tmp) {
     printf("%3d\n", tmp->data);
     ++len;
     tmp = tmp->next;

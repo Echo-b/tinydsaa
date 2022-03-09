@@ -8,10 +8,8 @@
  * @param size
  * @return int
  */
-int sequential_search(ElementType *arr, ElementType key, int size)
-{
-  for (int i = 0; i < size; ++i)
-  {
+int sequential_search(ElementType* arr, ElementType key, int size) {
+  for (int i = 0; i < size; ++i) {
     if (arr[i] == key)
       return i;
   }
@@ -28,8 +26,7 @@ int sequential_search(ElementType *arr, ElementType key, int size)
  * @param size
  * @return int
  */
-int sequential_search2(ElementType *arr, ElementType key, int size)
-{
+int sequential_search2(ElementType* arr, ElementType key, int size) {
   arr[0] = key;
   int i = size - 1;
   while (arr[i] != key)
@@ -44,18 +41,14 @@ int sequential_search2(ElementType *arr, ElementType key, int size)
  * @param type
  * @return int
  */
-int binary_search(ElementType *arr, ElementType key, int size)
-{
+int binary_search(ElementType* arr, ElementType key, int size) {
   int left = 0, right = size - 1;
-  while (left <= right)
-  {
+  while (left <= right) {
     int mid = left + (right - left) >> 1;
-    if (arr[mid] == key)
-    {
+    if (arr[mid] == key) {
       printf("search successful!\n");
       return mid;
-    }
-    else if (arr[mid] > key)
+    } else if (arr[mid] > key)
       right = mid - 1;
     else
       left = mid + 1;
@@ -72,18 +65,14 @@ int binary_search(ElementType *arr, ElementType key, int size)
  * @param size
  * @return int
  */
-int interpolation_search(ElementType *arr, ElementType key, int size)
-{
+int interpolation_search(ElementType* arr, ElementType key, int size) {
   int left = 0, right = size - 1;
-  while (left <= right)
-  {
+  while (left <= right) {
     int mid = left + (right - left) * ((key - arr[left]) / (arr[right] - arr[left]));
-    if (arr[mid] == key)
-    {
+    if (arr[mid] == key) {
       printf("search successful!\n");
       return mid;
-    }
-    else if (arr[mid] > key)
+    } else if (arr[mid] > key)
       right = mid - 1;
     else
       left = mid + 1;
@@ -99,6 +88,5 @@ int interpolation_search(ElementType *arr, ElementType key, int size)
  * @param size
  * @return int
  */
-int fibonacci_search(ElementType *arr, ElementType key, int size)
-{
+int fibonacci_search(ElementType* arr, ElementType key, int size) {
 }

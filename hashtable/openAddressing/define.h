@@ -1,10 +1,10 @@
 #ifndef _OPEN_ADDR_HASH_TABLE_
 #define _OPEN_ADDR_HASH_TABLE_
 
+#include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 #define ERROR 0
 #define OK 1
@@ -15,29 +15,26 @@ typedef Index position;
 typedef int ElementType;
 
 struct hashTbl;
-typedef struct hashTbl *hashTable;
+typedef struct hashTbl* hashTable;
 
 #define minTableSize 100
 
-enum KindofEntry
-{
+enum KindofEntry {
   Legitimate,
   Empty,
   Delete
 };
 
-struct hashEntry
-{
+struct hashEntry {
   ElementType data;
   enum KindofEntry info;
 };
 
 typedef struct hashEntry Cell;
 
-struct hashTbl
-{
+struct hashTbl {
   int tablesize;
-  Cell *theCells;
+  Cell* theCells;
 };
 
 hashTable init(unsigned int table_size);

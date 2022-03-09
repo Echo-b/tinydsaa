@@ -7,11 +7,9 @@
  * @param linked_list_queue
  * @return int
  */
-int initLinkedQueue(linkedListQueue_t *linked_list_queue)
-{
+int initLinkedQueue(linkedListQueue_t* linked_list_queue) {
   linked_list_queue->front = (ptr_queueNode)malloc(sizeof(struct QueueNode));
-  if (!linked_list_queue->front)
-  {
+  if (!linked_list_queue->front) {
     printf("malloc failed!\n");
     return ERROR;
   }
@@ -29,11 +27,9 @@ int initLinkedQueue(linkedListQueue_t *linked_list_queue)
  * @param e
  * @return int
  */
-int push(linkedListQueue_t *linked_list_queue, ElementType e)
-{
+int push(linkedListQueue_t* linked_list_queue, ElementType e) {
   ptr_queueNode push_node = (ptr_queueNode)malloc(sizeof(struct QueueNode));
-  if (!push_node)
-  {
+  if (!push_node) {
     printf("malloc failed!\n");
     return ERROR;
   }
@@ -52,14 +48,12 @@ int push(linkedListQueue_t *linked_list_queue, ElementType e)
  * @param e
  * @return int
  */
-int pop(linkedListQueue_t *linked_list_queue, ElementType *e)
-{
-  if (is_empty(*linked_list_queue))
-  {
+int pop(linkedListQueue_t* linked_list_queue, ElementType* e) {
+  if (is_empty(*linked_list_queue)) {
     printf("the queue is empty!\n");
     return ERROR;
   }
-  QueueNode_t *pop_node = linked_list_queue->front->next;
+  QueueNode_t* pop_node = linked_list_queue->front->next;
   *e = pop_node->data;
   linked_list_queue->front->next = pop_node->next;
   if (linked_list_queue->rear == pop_node)
@@ -76,18 +70,15 @@ int pop(linkedListQueue_t *linked_list_queue, ElementType *e)
  * @param linke_list_queue
  * @return int
  */
-int clear_queue(linkedListQueue_t *linked_list_queue)
-{
+int clear_queue(linkedListQueue_t* linked_list_queue) {
   linked_list_queue->front = linked_list_queue->rear = nullptr;
   linked_list_queue->size = 0;
   printf("clear the queue is successful!\n");
   return OK;
 }
 
-int destory_queue(linkedListQueue_t *linked_list_queue)
-{
-  while (linked_list_queue->front)
-  {
+int destory_queue(linkedListQueue_t* linked_list_queue) {
+  while (linked_list_queue->front) {
     linked_list_queue->rear = linked_list_queue->front;
     free(linked_list_queue->front);
     linked_list_queue->front = linked_list_queue->rear->next;
@@ -96,13 +87,10 @@ int destory_queue(linkedListQueue_t *linked_list_queue)
   return OK;
 }
 
-int get_size(linkedListQueue_t linked_list_queue)
-{
+int get_size(linkedListQueue_t linked_list_queue) {
   return linked_list_queue.size;
 }
 
-bool is_empty(linkedListQueue_t linked_list_queue)
-{
+bool is_empty(linkedListQueue_t linked_list_queue) {
   return linked_list_queue.size == 0;
 }
-
